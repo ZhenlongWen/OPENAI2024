@@ -1,0 +1,9 @@
+let temp = Math.floor(parseFloat(prompt("The temperature right now in Fahrenhei$
+    
+if(temp < 50){
+    console.log("cold");
+}else if (temp>=50 && temp<80 ){
+    console.log("warm");
+}else {
+    console.log("hot");    
+}

@@ -1,0 +1,13 @@
+
+    const n = parseInt(prompt("Enter a positive integer n:"));
+    if (isNaN(n) || n < 1) {
+        alert("Please enter a valid positive integer.");
+    }
+
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+        sum += i;
+    }
+
+    alert(`The sum of all numbers from 1 to ${n} is ${sum}.`);
+

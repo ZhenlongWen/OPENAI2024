@@ -1,0 +1,22 @@
+            let score = 0;
+
+            // Question 1
+            let answer1 = prompt("What is the capital of France? \nA: Paris \nB: London \nC: Rome", "");
+            if (answer1.toUpperCase() === "A") {
+                score++;
+            }
+
+            // Question 2
+            let answer2 = prompt("What is 2 + 2? \nA: 3 \nB: 4 \nC: 5", "");
+            if (answer2.toUpperCase() === "B") {
+                score++;
+            }
+
+            // Question 3
+            let answer3 = prompt("Who wrote Hamlet? \nA: Shakespeare \nB: Dickens \nC: Austen", "");
+            if (answer3.toUpperCase() === "A") {
+                score++;
+            }
+
+            
+            console.log(`You got ${score} out of 3 questions right.`);

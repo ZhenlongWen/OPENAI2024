@@ -1,0 +1,4 @@
+    const exchangeRate = 7.15; 
+    const usd = await prompt('Enter amount in USD: '); 
+    const cny = parseFloat(usdAmount) * exchangeRate; 
+    console.log(`${usd} USD is approximately ${cny.toFixed(2)} CNY.`);
