@@ -15,8 +15,8 @@ function createGPTPrompt(details) {
   return `
     You are a futuristic engineer designing a gadget that serves the purpose of ${details.purpose}. 
     The gadget includes the following key features: ${details.features}. 
-    Provide a brief description of how the gadget works and its appearance and key components according to the information provided above. 
-    Make the response futuristc, creative and in 70 words in one paragraph and only the description.
+    Provide a brief description of how the gadget works and underline its appearance and key components according to the information provided above. 
+    Make the response futuristc, reasonable and in 70 words in one paragraph and only the description.
     Your response should complete the sentence "The object is..."
   `;
 }
@@ -28,7 +28,7 @@ const gptResponse = await promptGPT (promptToGPT, {temperature: 0.8, max_tokens:
 say("The Gadget Description is:");
 say(`${gptResponse}`);
 
-const imageResponse = await promptDalle(gptResponse);
+const imageResponse = await promptDalle(gptResponse + " Fantasy Art Digital Painting.");
 say(imageResponse.url);
 
 
