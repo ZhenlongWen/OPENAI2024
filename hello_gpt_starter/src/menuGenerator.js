@@ -120,7 +120,7 @@ if (parseYesNo(continueGenerating) === "yes") {
   }
   const lastLine = colors.bold.italic.bgRgb24;
   console.log("\n");
-  console.log(lastLine("Thank you for using the Menu Generator!", 0xff9e3d));
+  console.log(lastLine("Thank you for using the Menu Generator, Bon Appétit!", 0xff9e3d));
 }
 }
 

@@ -29,25 +29,37 @@ export function parseYesNo(input) {
 }
 
 export async function modifyAnswers(answers) {
-  const modify = await askUntilValid("Would you like to change any of the answers? (yes/no)");
-  if (parseYesNo(modify) === "yes") {
-    const questionKeys = Object.keys(answers);
-    console.log("Here are the questions you answered:");
-    questionKeys.forEach((key, index) => {
-      console.log(`${index + 1}. ${key.replace(/([A-Z])/g, ' $1')}: ${answers[key]}`);
-    });
-
-    const questionNumber = await askUntilValid("Enter the number of the question you'd like to change:");
-    const questionIndex = parseInt(questionNumber) - 1;
-    if (questionIndex >= 0 && questionIndex < questionKeys.length) {
-      const questionKey = questionKeys[questionIndex];
-      const newAnswer = await askUntilValid(`Please enter a new answer for ${questionKey.replace(/([A-Z])/g, ' $1')}:`);
-      answers[questionKey] = newAnswer;
-    } else {
-      console.log("Invalid number. No changes made.");
+    const modify = await askUntilValid("Would you like to change any of the answers? (yes/no)");
+  
+    if (parseYesNo(modify) === "yes") {
+      const questionKeys = Object.keys(answers);
+      console.log("Here are the questions you answered:");
+  
+      // Display the list of current answers
+      questionKeys.forEach((key, index) => {
+        console.log(`${index + 1}. ${key.replace(/([A-Z])/g, ' $1')}: ${answers[key]}`);
+      });
+  
+      // Ask which questions they want to change, allowing multiple numbers
+      const questionNumbers = await askUntilValid("Enter the numbers of the questions you'd like to change (comma-separated):");
+      const questionIndexes = questionNumbers.split(",").map(num => parseInt(num.trim()) - 1);
+  
+      // Loop through the provided question numbers
+      for (const questionIndex of questionIndexes) {
+        if (questionIndex >= 0 && questionIndex < questionKeys.length) {
+          const questionKey = questionKeys[questionIndex];
+          
+          // Ask for the new answer for each selected question
+          const newAnswer = await askUntilValid(`Please enter a new answer for ${questionKey.replace(/([A-Z])/g, ' $1')}:`);
+          answers[questionKey] = newAnswer; // Update the answer
+        } else {
+          console.log(`Invalid number: ${questionIndex + 1}. Skipping this question.`);
+        }
+      }
+  
+      console.log("All changes saved.");
     }
   }
-}
 
 export async function askCuisinePreference(answers) {
   let validResponse = false;
