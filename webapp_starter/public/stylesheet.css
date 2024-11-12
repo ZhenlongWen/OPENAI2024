@@ -16,9 +16,9 @@
 body {
     font-family: 'BerkeleyMono', sans-serif;
     text-align: left;
-    margin: 1;
+    margin: 0.5;
     padding: 0;
-    line-height: 1;
+    line-height: 1.1;
   }
 
   bigTitle {
@@ -163,9 +163,12 @@ body {
   }
   
   p {
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #333;
+    position: relative;
+    color: gray; /* Initial color for the link text */
+    text-decoration: none; /* Removes the underline */
+    font-weight: light;
+    /* display: inline-block; */
+    overflow: hidden;
   }
   
   button {
@@ -174,7 +177,7 @@ body {
     padding: 0.5em 1em;
     border: none;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 0.8em;
   }
   
   button:hover {

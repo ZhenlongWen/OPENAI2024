@@ -5,6 +5,23 @@ import { createExitSignal, staticServer } from "./shared/server.ts";
 const app = new Application();
 const router = new Router();
 
+router.get("/api/d6", (ctx) => {
+  const roll = Math.floor(Math.random() * 6) + 1;
+  ctx.response.body = { value: roll };
+});
+
+router.get("/api/test", (ctx) => {
+    console.log("someone made a request to /api/test");
+  
+    // output some info about the request
+    console.log("ctx.request.url.pathname:", ctx.request.url.pathname);
+    console.log("myParam:", ctx.request.url.searchParams.get("myParam"));
+    console.log("ctx.request.method:", ctx.request.method);
+  
+    // send a response back to the browser
+    ctx.response.body = "This is a test.";
+  });
+  
 router.get("/api/fortune", (ctx) => {
   const name = ctx.request.url.searchParams.get("name");
   const fortunes = [
